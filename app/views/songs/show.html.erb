@@ -1,0 +1,28 @@
+<h2> <%= @playlist.title %> </h2><br>
+
+<p> <%= @playlist.description %></p><br>
+
+<table style='width:100%'>
+  <tr>
+    <th>Song Name</th>
+    <th>Artist</th>
+    <th>Genre</th>
+  </tr>
+  <% @playlist.songs.each do |song| %>
+  <tr>
+    <td><%= link_to song.name, song_path(song) %></td>
+    <td><%= link_to song.artist %></td>
+    <td><%= link_to song.genre %></td>
+  </tr>
+
+<h3><%= link_to "Your Song Library", songs_path %></h3><br>
+
+<h3>Your Playlists:</h3><br>
+
+
+<h4>Tickets: <%= @user.tickets %></h4><br>
+<h4>Mood: <%= @user.mood %></h4><br>
+<h4>Height: <%= @user.height %> inches</h4><br>
+
+<%= link_to "Playlists", attractions_path %><br>
+<%= link_to "Log Out", logout_path %>

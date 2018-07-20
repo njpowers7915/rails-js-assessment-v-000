@@ -1,5 +1,5 @@
 <h1>Log in</h1>
-<%= form_for(:session, url: signin_path) do |f| %>
+<%= form_for(:session, url: login_path) do |f| %>
   <label for "user_name">Name: </label>
   <select id='user_name' name='session[name]'>
     <% User.all.each do |i| %>

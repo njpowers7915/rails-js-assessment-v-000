@@ -1,0 +1,16 @@
+<% if @user.admin %>
+  <h2>ADMIN</h2>
+<% end %>
+<h2>Welcome <%= @user.name %>!</h2><br>
+
+<h3><%= link_to "Your Song Library", songs_path %></h3><br>
+
+<h3>Your Playlists:</h3><br>
+
+
+<h4>Tickets: <%= @user.tickets %></h4><br>
+<h4>Mood: <%= @user.mood %></h4><br>
+<h4>Height: <%= @user.height %> inches</h4><br>
+
+<%= link_to "Playlists", attractions_path %><br>
+<%= link_to "Log Out", logout_path %>
