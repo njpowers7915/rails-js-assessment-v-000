@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  ef new
+  def new
     @user = User.new
   end
 
@@ -35,11 +35,10 @@ class UsersController < ApplicationController
 
   def update
     respond_to do |format|
-      if @user.update(user_params)
+    if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
-      else
+    else
         format.html { render :edit }
-      end
     end
   end
 
@@ -50,6 +49,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password, :admin)
   end
-
 
 end
