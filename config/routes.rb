@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root "welcome#home"
+  root "welcome#home" 
 
   get '/login', to: "users#new"
   post '/login', to: "users#create"

@@ -1,0 +1,21 @@
+<h1>Sign up</h1>
+<br>
+<%= form_for @user do |f| %>
+  <h4>Name: </h4><br>
+  <%= f.text_field :name %><br>
+  <h4>Email: </h4><br>
+  <%= f.text_field :email %><br>
+
+
+  <h4>Password:</h4><br>
+  <%= f.password_field :password %><br>
+  <h4>Password Confirmation:</h4><br>
+  <%= f.password_field :password_confirmation %><br>
+
+  <h4>Check box if you wish to be admin:<h4>
+  <%= f.check_box :admin %>
+  <br>
+  
+  <br>
+  <%= f.submit "Create User" %>
+<% end %>
