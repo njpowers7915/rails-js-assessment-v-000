@@ -6,5 +6,11 @@
   <h4>Description: </h4><br>
   <%= f.text_area :description %><br>
 
+  <%= label :private, "Private", value: true %>
+  <%= f.radio_button :private, true, :checked => true, :value => true %>
+
+  <%= label :private, "Public", value: false %>
+  <%= f.radio_button :private, false, :value => false %>
+
   <%= f.submit "Create Playlist" %>
 <% end %>
