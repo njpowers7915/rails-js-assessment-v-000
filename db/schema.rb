@@ -10,14 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_20_190107) do
+ActiveRecord::Schema.define(version: 2018_07_21_124257) do
 
   create_table "playlists", force: :cascade do |t|
-    t.string "name"
+    t.string "title"
     t.boolean "private", default: true
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "description"
   end
 
   create_table "song_playlists", force: :cascade do |t|

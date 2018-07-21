@@ -6,11 +6,14 @@
 <h3><%= link_to "Your Song Library", songs_path %></h3><br>
 
 <h3>Your Playlists:</h3><br>
+<ol>
+<% @user.playlists.each do |playlist| %>
+  <li><%= link_to playlist.title, playlist_path(playlist) %></li><br>
+<% end %>
+</ol>
+
+<h3><%= link_to "View Public Playlists", playlists_path %></h3><br>
 
 
-<h4>Tickets: <%= @user.tickets %></h4><br>
-<h4>Mood: <%= @user.mood %></h4><br>
-<h4>Height: <%= @user.height %> inches</h4><br>
-
-<%= link_to "Playlists", attractions_path %><br>
+<%= link_to "Add Playlists", playlists_path %><br>
 <%= link_to "Log Out", logout_path %>
