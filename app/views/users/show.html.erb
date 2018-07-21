@@ -3,17 +3,23 @@
 <% end %>
 <h2>Welcome <%= @user.name %>!</h2><br>
 
-<h3><%= link_to "Your Song Library", songs_path %></h3><br>
+<% if @user.playlists.empty? %>
+  <h4><%= link_to "Create New Playlist", new_playlist_path %></h4>
+<% else %>
+  <h4><%= link_to "Your Song Library", songs_path %></h4><br>
 
-<h3>Your Playlists:</h3><br>
-<ol>
-<% @user.playlists.each do |playlist| %>
-  <li><%= link_to playlist.title, playlist_path(playlist) %></li><br>
+  <h4>Your Playlists:</h4><br>
+  <ol>
+    <% @user.playlists.each do |playlist| %>
+    <li><%= link_to playlist.title, playlist_path(playlist) %></li><br>
+    <% end %>
+  </ol>
+  <h4><%= link_to "Create New Playlist", new_playlist_path %></h4>
 <% end %>
-</ol>
+<br>
 
-<h3><%= link_to "View Public Playlists", playlists_path %></h3><br>
+<h4><%= link_to "Song Search", songs_path %></h4><br>
+<h4><%= link_to "View Public Playlists", playlists_path %></h4><br>
 
 
-<%= link_to "Add Playlists", new_playlist_path %><br>
 <%= link_to "Log Out", logout_path %>
