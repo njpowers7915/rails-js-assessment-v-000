@@ -5,11 +5,11 @@ class PlaylistsController < ApplicationController
 
   def create
     @playlist = Playlist.new(playlist_params)
-    if @song.save
+    if @playlist.save
       #if user_params[:admin] == "0"
-        session[:song_id] = @song.id
+        session[:playlist_id] = @playlist.id
         #format.html { redirect_to @user, notice: "Welcome to APP NAME!" }
-        redirect_to @song
+        redirect_to @playlist
       #elsif user_params[:admin] == "1"
       #  admin_signup
       #end
@@ -21,7 +21,7 @@ class PlaylistsController < ApplicationController
 
   private
 
-  def song_params
-    params.require(:song).permit(:name, :artist, :genre)
+  def playlist_params
+    params.require(:playlist).permit(:title, :description, :user_id)
   end
 end
