@@ -1,7 +1,9 @@
-<% if @user.admin %>
-  <h2>ADMIN</h2>
-<% end %>
 <h2>Welcome <%= @user.name %>!</h2><br>
+
+<% if @user.admin %>
+  <h4>Upload Songs</h4>
+  <%= render 'songs/form' %>
+<% end %>
 
 <% if @user.playlists.empty? %>
   <h4><%= link_to "Create New Playlist", new_playlist_path %></h4>

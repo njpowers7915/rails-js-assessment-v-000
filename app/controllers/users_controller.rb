@@ -24,6 +24,7 @@ class UsersController < ApplicationController
   def show
     if User.find_by_id(session[:user_id])
       @user = User.find_by_id(session[:user_id])
+      @song = Song.new
       #@attraction = Attraction.find_by_id(session[:attraction_id])
 
     else
