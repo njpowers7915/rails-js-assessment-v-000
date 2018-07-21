@@ -1,11 +1,11 @@
 <h2> <%= @playlist.title %> </h2><br>
 
-<p> <%= @playlist.description %></p><br>
+<p>Description: <%= @playlist.description %></p><br>
 
-<% if @playlist.songs.nil? %>
-  <h3>Playlist is EMPTY. Please <%= link_to "add songs", edit_playlist_path(@playlist) %>.</h3>
+<% if @playlist.songs.empty? %>
+  <h4>Playlist is EMPTY. Please <%= link_to "Add songs", edit_playlist_path(@playlist) %>.</h4>
 <% else %>
-  <h3> <%= link_to "Add Songs", edit_playlist_path(@playlist) %></h3>
+  <h4> <%= link_to "Add Songs", edit_playlist_path(@playlist) %></h4>
   <table style='width:100%'>
     <tr>
       <th>Song Name</th>
@@ -18,11 +18,10 @@
       <td><%= link_to song.artist %></td>
       <td><%= link_to song.genre %></td>
     </tr>
+    <% end %>
   </table>
 <% end %>
+<br>
 
-<h3><%= link_to "Your Song Library", songs_path %></h3><br>
-
-
-<%= link_to "Playlists", attractions_path %><br>
+<%= link_to "Playlists", playlists_path %><br>
 <%= link_to "Log Out", logout_path %>
