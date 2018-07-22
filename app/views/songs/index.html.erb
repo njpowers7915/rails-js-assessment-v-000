@@ -1,7 +1,7 @@
 <h1>Songs</h1>
 
 <% if @user.admin %>
-  <%= link_to 'Add Song', new_song_path %>
+  <%= render 'songs/form' %>
 <% end %>
 
 <table style="width:100%">

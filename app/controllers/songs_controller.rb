@@ -9,7 +9,7 @@ class SongsController < ApplicationController
       #if user_params[:admin] == "0"
         session[:song_id] = @song.id
         #format.html { redirect_to @user, notice: "Welcome to APP NAME!" }
-        redirect_to current_user
+        redirect_to songs_path
       #elsif user_params[:admin] == "1"
       #  admin_signup
       #end
