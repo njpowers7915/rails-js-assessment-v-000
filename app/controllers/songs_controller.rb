@@ -22,6 +22,7 @@ class SongsController < ApplicationController
   def index
     if logged_in?
       if is_admin?
+        @song = Song.new
         @songs = Song.all
       else
         #@user = current_user

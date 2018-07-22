@@ -1,8 +1,12 @@
+<% if is_admin? %>
+<h4>ADMIN</h4>
+<% end %>
+
 <h2>Welcome <%= @user.name %>!</h2><br>
 
-<% if @user.admin %>
-  <h4>Upload Songs</h4>
+<% if is_admin? %>
   <%= render 'songs/form' %>
+  <br>
 <% end %>
 
 <% if @user.playlists.empty? %>

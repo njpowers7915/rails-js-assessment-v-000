@@ -1,11 +1,6 @@
-<h4>Upload Song</h4>
+<h4>Add Song</h4>
 <%= form_for @song do |f| %>
-  <h5>Name: </h5>
-  <%= f.text_field :name %>
-  <h5>Artist: </h5>
-  <%= f.text_field :artist %>
-  <h5>Genre: </h5>
-  <%= f.text_field :genre %>
-
+  <h5>Name: <%= f.text_field :name %> Artist:
+    <%= f.text_field :artist %> Genre: <%= f.text_field :genre %></h5>
   <%= f.submit "Upload" %>
 <% end %>
