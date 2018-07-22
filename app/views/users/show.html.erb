@@ -1,4 +1,4 @@
-<% if is_admin? %> 
+<% if is_admin? %>
 <h4>ADMIN</h4>
 <% end %>
 
@@ -11,7 +11,10 @@
 <% if @user.playlists.empty? %>
   <h4><%= link_to "Create New Playlist", new_playlist_path %></h4>
 <% else %>
-  <h4><%= link_to "Your Song Library", songs_path %></h4><br>
+
+  <% if !is_admin? %>
+    <h4><%= link_to "Your Song Library", songs_path %></h4><br>
+  <% end %>
 
   <h4>Your Playlists:</h4><br>
   <ol>
@@ -23,5 +26,10 @@
 <% end %>
 <br>
 
-<h4><%= link_to "Song Search", songs_path %></h4><br>
-<h4><%= link_to "View Public Playlists", playlists_path %></h4><br>
+<h4><%= link_to "View Songs", songs_path %></h4><br>
+
+<% if is_admin? %>
+  <h4><%= link_to "View Playlists", playlists_path %></h4><br>
+  <% else %>
+  <h4><%= link_to "View Public Playlists", playlists_path %></h4><br>
+<% end %>
