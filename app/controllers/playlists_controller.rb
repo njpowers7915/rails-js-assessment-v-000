@@ -40,8 +40,17 @@ class PlaylistsController < ApplicationController
   end
 
   def index
-    
-    @playlist = Playlist.all
+    if logged_in?
+      if is_admin?
+        @playlists = Playlist.all
+      else
+        @playlists = Playlist.all.where(private: false)
+      end
+    else
+      redirect_to '/'
+    end
+  end
+
   end
 
   private

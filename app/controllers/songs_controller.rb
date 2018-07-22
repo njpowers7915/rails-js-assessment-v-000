@@ -19,6 +19,19 @@ class SongsController < ApplicationController
     end
   end
 
+  def index
+    if logged_in?
+      if is_admin?
+        @songs = Song.all
+      else
+        #@user = current_user
+        @songs = current_user.songs
+      end
+    else
+      redirect_to '/'
+    end
+  end
+
   private
 
   def song_params

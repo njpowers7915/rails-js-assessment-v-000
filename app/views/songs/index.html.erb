@@ -1,0 +1,20 @@
+<h1>Songs</h1>
+
+<% if @user.admin %>
+  <%= link_to 'Add Song', new_song_path %>
+<% end %>
+
+<table style="width:100%">
+  <tr>
+    <th>Name</th>
+    <th>Artist</th>
+    <th>Genre</th>
+  </tr>
+  <% @songs.each do |i|%>
+  <tr>
+    <td><%= i.name %></td>
+    <td><%= i.artist %></td>
+    <td><%= i.genre %></td>
+  </tr>
+  <%end%>
+</table>
