@@ -37,7 +37,18 @@ class PlaylistsController < ApplicationController
   end
 
   def update
-
+    @playlist = Playlist.find(params[:id])
+    if @playlist.update_attributes(playlist_params)
+      if params["playlist"]["song"]
+        song_array = params["playlist"]["song"].split(" --- ")
+        song = Song.find_by(name: song_array[0], artist: song_array[1])
+        binding.pry
+      else
+        redirect_to playlist_path(@playlist)
+      end
+    else
+      render 'edit'
+    end
   end
 
   def index
