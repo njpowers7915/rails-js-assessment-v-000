@@ -42,9 +42,10 @@ class PlaylistsController < ApplicationController
       if params["playlist"]["song"]
         song_array = params["playlist"]["song"].split(" --- ")
         song = Song.find_by(name: song_array[0], artist: song_array[1])
-        binding.pry
+        @playlist.songs << song
+        redirect_to @playlist
       else
-        redirect_to playlist_path(@playlist)
+        redirect_to @playlist
       end
     else
       render 'edit'
