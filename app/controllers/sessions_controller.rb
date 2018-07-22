@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     else
       #Error Message
       #flash[:danger] = 'Invalid name/password combination'
-      redirect_to signin_path
+      redirect_to login_path
     end
   end
 

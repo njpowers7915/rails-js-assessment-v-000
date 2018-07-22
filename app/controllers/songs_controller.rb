@@ -25,8 +25,12 @@ class SongsController < ApplicationController
         @song = Song.new
         @songs = Song.all
       else
-        #@user = current_user
-        @songs = current_user.songs
+        @songs = Song.all
+        #if current_user.songs.nil?
+        #  redirect_to current_user
+        #else
+        #  @songs = current_user.songs
+        #end
       end
     else
       redirect_to '/'
