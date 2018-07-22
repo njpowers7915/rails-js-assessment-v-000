@@ -21,8 +21,8 @@ class PlaylistsController < ApplicationController
   end
 
   def show
-    if Playlist.find_by_id(session[:playlist_id])
-      @playlist = Playlist.find_by_id(session[:playlist_id])
+    if Playlist.find_by_id(params[:id])
+      @playlist = Playlist.find_by_id(params[:id])
       #@attraction = Attraction.find_by_id(session[:attraction_id])
 
     else

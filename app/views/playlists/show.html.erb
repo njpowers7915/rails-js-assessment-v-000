@@ -4,10 +4,11 @@
 
 <h5><%= link_to "Edit Playlist Details", edit_playlist_path(@playlist) %></h5>
 
+<%= render 'add_song' %>
+
 <% if @playlist.songs.empty? %>
-  <h4>Playlist is EMPTY. Please <%= link_to "Add songs", edit_playlist_path(@playlist) %>.</h4>
+  <h4>Playlist is EMPTY</h4>
 <% else %>
-  <%= render 'add_song' %>
   <table style='width:50%'>
     <tr>
       <th>Song Name</th>

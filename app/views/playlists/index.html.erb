@@ -1,0 +1,16 @@
+<h2>Playlists</h2><br>
+
+<table style="width:100%">
+  <tr>
+    <th>Title</th>
+    <th>User</th>
+    <th>Description</th>
+  </tr>
+  <% @playlists.each do |i|%>
+  <tr>
+    <td><%= link_to i.title, playlist_path(i) %></td>
+    <td><%= i.user.name %></td>
+    <td><%= i.description %></td>
+  </tr>
+  <%end%>
+</table>
