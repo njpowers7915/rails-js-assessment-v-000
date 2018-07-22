@@ -33,6 +33,7 @@ class PlaylistsController < ApplicationController
 
   def edit
     @playlist = Playlist.find(params[:id])
+    @songs = Song.all
   end
 
   def update
@@ -49,8 +50,6 @@ class PlaylistsController < ApplicationController
     else
       redirect_to '/'
     end
-  end
-
   end
 
   private
