@@ -6,7 +6,7 @@
   <h4>Playlist is EMPTY. Please <%= link_to "Add songs", edit_playlist_path(@playlist) %>.</h4>
 <% else %>
   <h4> <%= link_to "Add Songs", edit_playlist_path(@playlist) %></h4>
-  <table style='width:100%'>
+  <table style='width:50%'>
     <tr>
       <th>Song Name</th>
       <th>Artist</th>
@@ -14,9 +14,9 @@
     </tr>
     <% @playlist.songs.each do |song| %>
     <tr>
-      <td><%= link_to song.name, song_path(song) %></td>
-      <td><%= link_to song.artist %></td>
-      <td><%= link_to song.genre %></td>
+      <td><%= link_to song.name, song %></td>
+      <td><%= song.artist %></td>
+      <td><%= song.genre %></td>
     </tr>
     <% end %>
   </table>
