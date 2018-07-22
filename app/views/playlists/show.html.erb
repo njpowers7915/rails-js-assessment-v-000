@@ -1,11 +1,13 @@
 <h2> <%= @playlist.title %> </h2><br>
 
-<p>Description: <%= @playlist.description %></p><br>
+<p>Description: <%= @playlist.description %></p>
+
+<h5><%= link_to "Edit Playlist Details", edit_playlist_path(@playlist) %></h5>
 
 <% if @playlist.songs.empty? %>
   <h4>Playlist is EMPTY. Please <%= link_to "Add songs", edit_playlist_path(@playlist) %>.</h4>
 <% else %>
-  <h4> <%= link_to "Add Songs", edit_playlist_path(@playlist) %></h4>
+  <%= render 'add_song' %>
   <table style='width:50%'>
     <tr>
       <th>Song Name</th>
@@ -22,6 +24,3 @@
   </table>
 <% end %>
 <br>
-
-<%= link_to "Playlists", playlists_path %><br>
-<%= link_to "Log Out", logout_path %>

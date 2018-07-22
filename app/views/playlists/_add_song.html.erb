@@ -1,0 +1,16 @@
+<%= form_for @playlist do |f| %>
+  <%= f.hidden_field :title %><br>
+  <%= f.hidden_field :description %><br>
+  <%= f.hidden_field :private %>
+  <label for="playlist_song">Add Song: </label>
+  <input list="songs" name="playlist[song]" />
+  <datalist id="songs">
+    <% Song.all.each do |song| %>
+      <option value="<%= song.name %> --- <%= song.artist %>">
+    <% end %>
+  </datalist>
+
+  <%= f.submit "+" %>
+  <br>
+  <br>
+<% end %>

@@ -45,6 +45,7 @@ class PlaylistsController < ApplicationController
         @playlist.songs << song
         redirect_to @playlist
       else
+        @playlist.update_attributes(playlist_params)
         redirect_to @playlist
       end
     else
