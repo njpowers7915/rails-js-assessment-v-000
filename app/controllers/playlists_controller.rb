@@ -38,7 +38,7 @@ class PlaylistsController < ApplicationController
 
   def update
     @playlist = Playlist.find(params[:id])
-    if @playlist.user = User.find_by_id(session[:id])
+    #if @playlist.user = User.find_by_id(session[:id])
       if @playlist.update_attributes(playlist_params)
         if params["playlist"]["song"]
           song_array = params["playlist"]["song"].split(" --- ")
@@ -52,8 +52,9 @@ class PlaylistsController < ApplicationController
       else
         render 'edit'
       end
-    else
+    #else
       #WARNING - DO NOT HAVE ACCESS TO EDIT THIS PLAYLIST
+    #end
   end
 
   def index
@@ -67,6 +68,10 @@ class PlaylistsController < ApplicationController
       redirect_to '/'
     end
   end
+
+  #def destroy
+  #  if params["playlist"]["song"]
+  #end
 
   private
 

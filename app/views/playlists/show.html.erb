@@ -14,12 +14,14 @@
       <th>Song Name</th>
       <th>Artist</th>
       <th>Genre</th>
+      <th>Delete Song</th>
     </tr>
     <% @playlist.songs.each do |song| %>
     <tr>
       <td><%= link_to song.name, song %></td>
       <td><%= song.artist %></td>
       <td><%= song.genre %></td>
+      <td><%= "Delete" %></td>
     </tr>
     <% end %>
   </table>
