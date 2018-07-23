@@ -8,20 +8,21 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      #if user_params[:admin] == "0"
         session[:user_id] = @user.id
-        #format.html { redirect_to @user, notice: "Welcome to APP NAME!" }
+        #@message = "Hi #{@user.name}!"
         redirect_to @user
       #elsif user_params[:admin] == "1"
       #  admin_signup
       #end
     else
       render 'new'
-      #format.html { render :new }
     end
   end
 
   def show
+    @message = params[:message] if params[:message]
+    @message ||= false
+
     if User.find_by_id(session[:user_id])
       @user = User.find_by_id(session[:user_id])
       @song = Song.new
