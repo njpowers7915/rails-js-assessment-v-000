@@ -4,7 +4,7 @@ class SongsController < ApplicationController
   end
 
   def create
-    @song = Song.new(song_params)
+    @song = Song.new(song_params) 
     if @song.save
       #if user_params[:admin] == "0"
         session[:song_id] = @song.id
