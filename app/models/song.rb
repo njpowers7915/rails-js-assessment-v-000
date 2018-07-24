@@ -9,6 +9,7 @@ class Song < ApplicationRecord
   end
 
   def play_song
+    self.update_attribute(:plays, (self.plays + 1))
   end
 
 end

@@ -4,7 +4,7 @@ class SongsController < ApplicationController
   end
 
   def create
-    @song = Song.new(song_params) 
+    @song = Song.new(song_params)
     if @song.save
       #if user_params[:admin] == "0"
         session[:song_id] = @song.id
@@ -17,6 +17,16 @@ class SongsController < ApplicationController
       render 'new'
       #format.html { render :new }
     end
+  end
+
+  def edit
+    @song = Song.find(params[:id])
+  end
+
+  def update
+    @song = Song.find(params[:id])
+    play_song
+    redirect_to user_playlist_path(@user, @playlist)
   end
 
   def index
@@ -44,6 +54,6 @@ class SongsController < ApplicationController
   private
 
   def song_params
-    params.require(:song).permit(:name, :artist, :genre)
+    params.require(:song).permit(:name, :artist, :genre, :plays)
   end
 end

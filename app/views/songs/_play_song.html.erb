@@ -1,0 +1,9 @@
+<%= form_for @song do |f| %>
+  <%= f.hidden_field :name %>
+  <%= f.hidden_field :artist %>
+  <%= f.hidden_field :genre %>
+  <%= f.hidden_field :plays %>
+  <%= f.submit "&#9658" %>
+  <br>
+  <br>
+<% end %>
