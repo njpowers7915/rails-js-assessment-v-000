@@ -2,7 +2,7 @@
 
 <p>Description: <%= @playlist.description %></p>
 
-<h5><%= link_to "Edit Playlist Details", edit_playlist_path(@playlist) %></h5>
+<h5><%= link_to "Edit Playlist Details", edit_user_playlist_path(@user, @playlist) %></h5>
 
 <%= render 'add_song' %>
 

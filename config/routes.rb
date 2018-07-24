@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
   resources :users do
-    resources :playlists, only: [:new, :create, :show]
+    resources :playlists, only: [:new, :create, :show, :edit, :update, :destroy]
+  end
+  resources :playlists, only: [:index]
 
-
-  resources :playlists
   resources :songs
 
   root "welcome#home"

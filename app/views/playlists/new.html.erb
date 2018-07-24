@@ -1,6 +1,6 @@
 <h1>Create Playlist</h1>
 <br>
-<%= form_for @playlist do |f| %>
+<%= form_for ([@user, @playlist]) do |f| %>
   <h4>Title: </h4><br>
   <%= f.text_field :title %><br>
   <h4>Description: </h4><br>
