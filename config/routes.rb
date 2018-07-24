@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
   resources :playlists, only: [:index]
 
+  get '/songs/most_popular', to: "songs#index"
   resources :songs
 
   root "welcome#home"
@@ -16,7 +17,5 @@ Rails.application.routes.draw do
   get '/logout', to: "sessions#destroy"
 
   post '/delete', to: "playlists#destroy"
-
-  get '/songs/most_popular', to: "songs#index"
 
 end

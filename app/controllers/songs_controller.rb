@@ -1,4 +1,6 @@
 class SongsController < ApplicationController
+  helper_method :params
+  
   def new
     @song = Song.new
   end
@@ -46,7 +48,6 @@ class SongsController < ApplicationController
         @songs = Song.by_genre(params[:genre])
       else
         @songs = Song.all
-        binding.pry
         #SORT BY NAME
       end
     else
