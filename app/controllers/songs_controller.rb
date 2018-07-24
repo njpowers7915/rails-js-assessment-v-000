@@ -38,7 +38,7 @@ class SongsController < ApplicationController
     if logged_in?
       if is_admin?
         @songs = Song.all #SORT BY NAME
-      elsif !params[:most_popular].blank?
+      elsif params[:id] == "most_popular"
         @songs = Song.most_popular
         #SORT BY MOST PLAYS
       elsif !params[:artist].blank?
