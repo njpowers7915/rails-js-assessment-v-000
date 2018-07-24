@@ -8,8 +8,8 @@ class Song < ApplicationRecord
   #def add_song
   #end
 
-  #def play_song
-#    self.update_attribute(:plays, (self.plays + 1))
-#  end
+  def play_song
+    self.update_attribute(:plays, (self.plays + 1))
+  end
 
 end

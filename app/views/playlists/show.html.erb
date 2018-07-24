@@ -22,7 +22,7 @@
       <td><%= link_to song.name, song %></td>
       <td><%= song.artist %></td>
       <td><%= song.genre %></td>
-      <!--<td><%= link_to "PLAY",  '/songs/play' %></td> -->
+      <td><%= render partial: 'songs/play_song', locals: {song: song} %></td>
       <td><%= "Delete" %></td>
     </tr>
     <% end %>

@@ -34,7 +34,9 @@ class SongsController < ApplicationController
 
   def update
     @song = Song.find(params[:id])
-    play_song
+    @song.play_song
+    @user = session[:user_id]
+    @playlist = session[:playlist_id]
     redirect_to user_playlist_path(@user, @playlist)
   end
 
