@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :users
+  resources :users do
+    resources :playlists, only: [:new, :create, :show]
+
+
   resources :playlists
   resources :songs
 
