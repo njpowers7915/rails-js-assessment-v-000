@@ -17,11 +17,6 @@
 <% if @user.playlists.empty? %>
   <h4><%= link_to "Create New Playlist", new_user_playlist_path(@user) %></h4>
 <% else %>
-
-  <% if !is_admin? %>
-    <h4><%= link_to "Your Song Library", songs_path %></h4><br>
-  <% end %>
-
   <h4>Your Playlists:</h4><br>
   <ol>
     <% @user.playlists.each do |playlist| %>
@@ -32,10 +27,15 @@
 <% end %>
 <br>
 
-<h4><%= link_to "View Songs", songs_path %></h4><br>
-
 <% if is_admin? %>
-  <h4><%= link_to "View Playlists", playlists_path %></h4><br>
+  <h4><%= link_to "All User Playlists", playlists_path %></h4><br>
   <% else %>
-  <h4><%= link_to "View Public Playlists", playlists_path %></h4><br>
+  <h4><%= link_to "Public Playlists", playlists_path %></h4><br>
 <% end %>
+<br>
+
+<h4>Song Search</h4>
+<h4><%= link_to "Most Popular Songs", songs_path %></h4><br>
+<br>
+
+<h4><%= link_to "Songs Index", songs_path %></h4><br>
