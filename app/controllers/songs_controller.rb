@@ -37,13 +37,16 @@ class SongsController < ApplicationController
       if is_admin?
         @songs = Song.all #SORT BY NAME
       elsif !params[:most_popular].blank?
-        @songs = Song.all
+        @songs = Song.most_popular
         #SORT BY MOST PLAYS
-      elsif !params[:top_added].blank?
-        @songs = Song.all
+      elsif !params[:artist].blank?
+        @songs = Song.by_artist(params[:artist])
         #SORT BY MOST PLAYLISTS
+      elsif !params[:genre].blank?
+        @songs = Song.by_genre(params[:genre])
       else
         @songs = Song.all
+        binding.pry
         #SORT BY NAME
       end
     else

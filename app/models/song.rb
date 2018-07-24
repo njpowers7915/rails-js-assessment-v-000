@@ -12,4 +12,19 @@ class Song < ApplicationRecord
     self.update_attribute(:plays, (self.plays + 1))
   end
 
+  def self.all
+    order("songs.artist ASC").order("songs.name ASC").order("songs.genre ASC")
+  end
+
+  def self.by_artist(artist)
+    where(artist: artist).order("songs.name ASC")
+  end
+
+  def self.by_genre(genre)
+    where(genre: genre).order("songs.artist ASC").order("songs.name ASC")
+  end
+
+  def self.most_popular
+    order("songs.plays DESC").order("songs.artist ASC").order("songs.name ASC")
+  end
 end
