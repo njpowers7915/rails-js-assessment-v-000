@@ -40,7 +40,7 @@ class PlaylistsController < ApplicationController
     @playlist = Playlist.find(params[:id])
     #if @playlist.user = User.find_by_id(session[:id])
       if @playlist.update_attributes(playlist_params)
-        if params["playlist"]["song"]
+        if params["playlist"]["song"] && !params["playlist"]["song"].empty?
           song_array = params["playlist"]["song"].split(" --- ")
           song = Song.find_by(name: song_array[0], artist: song_array[1])
           @playlist.songs << song
