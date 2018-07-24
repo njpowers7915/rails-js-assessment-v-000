@@ -17,6 +17,6 @@ Rails.application.routes.draw do
 
   post '/delete', to: "playlists#destroy"
 
-  get '/play', to: "songs#play"
+  get '/songs/most_popular', to: "songs#index"
 
 end

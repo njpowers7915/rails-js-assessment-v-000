@@ -3,14 +3,6 @@ class SongsController < ApplicationController
     @song = Song.new
   end
 
-#  def play
-#    @song = Song.find(params[:id])
-#    @user = User.find_by_id(sessions[:user_id])
-#    @playlist = Playlist.find_by_id(sessions[:playlist_id])
-#    play_song
-#    redirect_to user_playlist_path(@user, @playlist)
-#  end
-
   def create
     @song = Song.new(song_params)
     if @song.save
@@ -43,15 +35,16 @@ class SongsController < ApplicationController
   def index
     if logged_in?
       if is_admin?
-        @song = Song.new
+        @songs = Song.all #SORT BY NAME
+      elsif !params[:most_popular].blank?
         @songs = Song.all
+        #SORT BY MOST PLAYS
+      elsif !params[:top_added].blank?
+        @songs = Song.all
+        #SORT BY MOST PLAYLISTS
       else
         @songs = Song.all
-        #if current_user.songs.nil?
-        #  redirect_to current_user
-        #else
-        #  @songs = current_user.songs
-        #end
+        #SORT BY NAME
       end
     else
       redirect_to '/'
