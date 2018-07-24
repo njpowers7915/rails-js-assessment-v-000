@@ -26,6 +26,7 @@ class PlaylistsController < ApplicationController
     if Playlist.find_by_id(params[:id])
       @playlist = Playlist.find_by_id(params[:id])
       @user = @playlist.user
+      @songs = @playlist.songs
       #@attraction = Attraction.find_by_id(session[:attraction_id])
 
     else

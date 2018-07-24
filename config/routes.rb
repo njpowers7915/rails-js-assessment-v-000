@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   post '/login', to: "sessions#create"
   get '/logout', to: "sessions#destroy"
 
-  post '/delete', to: "playlist#destroy"
+  post '/delete', to: "playlists#destroy"
+
+  get '/play', to: "songs#play"
 
 end

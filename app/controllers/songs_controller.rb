@@ -23,6 +23,11 @@ class SongsController < ApplicationController
     @song = Song.find(params[:id])
   end
 
+  def play
+    @song = Song.find(params[:id])
+    play_song
+  end
+
   def update
     @song = Song.find(params[:id])
     play_song
