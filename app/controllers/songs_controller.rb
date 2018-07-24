@@ -3,6 +3,14 @@ class SongsController < ApplicationController
     @song = Song.new
   end
 
+#  def play
+#    @song = Song.find(params[:id])
+#    @user = User.find_by_id(sessions[:user_id])
+#    @playlist = Playlist.find_by_id(sessions[:playlist_id])
+#    play_song
+#    redirect_to user_playlist_path(@user, @playlist)
+#  end
+
   def create
     @song = Song.new(song_params)
     if @song.save
@@ -23,10 +31,6 @@ class SongsController < ApplicationController
     @song = Song.find(params[:id])
   end
 
-  def play
-    @song = Song.find(params[:id])
-    play_song
-  end
 
   def update
     @song = Song.find(params[:id])
