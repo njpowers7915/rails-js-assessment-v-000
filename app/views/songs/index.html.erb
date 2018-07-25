@@ -9,12 +9,14 @@
     <th>Name</th>
     <th>Artist</th>
     <th>Genre</th>
+    <th>Plays</th>
   </tr>
   <% @songs.each do |i|%>
   <tr>
     <td><%= i.name %></td>
     <td><%= i.artist %></td>
     <td><%= i.genre %></td>
+    <td><%= i.plays %></td>
   </tr>
   <%end%>
 </table>

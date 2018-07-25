@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   end
   resources :playlists, only: [:index]
 
-  get '/songs/most_popular', to: "songs#index"
   resources :songs
+  get '/songs/:attribute/:name', to: 'songs#index'
+
 
   root "welcome#home"
 

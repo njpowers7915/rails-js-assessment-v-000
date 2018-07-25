@@ -1,6 +1,6 @@
 class SongsController < ApplicationController
   helper_method :params
-  
+
   def new
     @song = Song.new
   end
@@ -38,14 +38,14 @@ class SongsController < ApplicationController
     if logged_in?
       if is_admin?
         @songs = Song.all #SORT BY NAME
-      elsif params[:id] == "most_popular"
+      elsif params["attribute"] == "popular"
         @songs = Song.most_popular
         #SORT BY MOST PLAYS
-      elsif !params[:artist].blank?
-        @songs = Song.by_artist(params[:artist])
+      elsif params["attribute"] == "artist"
+        @songs = Song.by_artist(params["name"])
         #SORT BY MOST PLAYLISTS
-      elsif !params[:genre].blank?
-        @songs = Song.by_genre(params[:genre])
+      elsif params["attribute"] == "genre"
+        @songs = Song.by_genre(params["name"])
       else
         @songs = Song.all
         #SORT BY NAME
@@ -56,7 +56,13 @@ class SongsController < ApplicationController
   end
 
   def show
-    @song = Song.find_by_id(params[:id])
+    if params[:id] == "most_popular"
+      @songs = Song.most_popular
+
+      render 'index'
+    else
+      @song = Song.find_by_id(params[:id])
+    end
   end
 
   private
