@@ -29,10 +29,18 @@ class SongsController < ApplicationController
 
   def update
     @song = Song.find(params[:id])
-    @song.play_song
-    @user = session[:user_id]
     @playlist = session[:playlist_id]
-    redirect_to user_playlist_path(@user, @playlist)
+    @user = session[:user_id]
+    if params["delete"]
+      current_playlist = Playlist.find_by_id(session[:playlist_id])
+      current_playlist.remove_song_from_playlist(@song)
+      redirect_to user_playlist_path(@user, @playlist)
+    else
+      @song.play_song
+      #@user = session[:user_id]
+      #@playlist = session[:playlist_id]
+      redirect_to user_playlist_path(@user, @playlist)
+    end
   end
 
   def index

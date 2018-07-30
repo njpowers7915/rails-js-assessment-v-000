@@ -15,7 +15,7 @@
       <th>Artist</th>
       <th>Genre</th>
       <th></th>
-      <th>Delete Song</th>
+      <th></th>
     </tr>
     <% @playlist.songs.each do |song| %>
     <tr>
@@ -23,7 +23,7 @@
       <td><%= song.artist %></td>
       <td><%= song.genre %></td>
       <td><%= render partial: 'songs/play_song', locals: {song: song} %></td>
-      <td><%= "Delete" %></td>
+      <td><%= render partial: 'songs/delete_song', locals: {song: song} %></td>
     </tr>
     <% end %>
   </table>
