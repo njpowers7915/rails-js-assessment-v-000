@@ -44,8 +44,9 @@ class SongsController < ApplicationController
   end
 
   def index
+    @song = Song.new
     if logged_in?
-      if is_admin?
+      if is_admin? 
         @songs = Song.all #SORT BY NAME
       #elsif params["attribute"] == "popular"
       #  if params

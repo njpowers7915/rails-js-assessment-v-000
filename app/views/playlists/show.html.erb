@@ -22,8 +22,10 @@
       <td><%= link_to song.name, song %></td>
       <td><%= song.artist %></td>
       <td><%= song.genre %></td>
-      <td><%= render partial: 'songs/play_song', locals: {song: song} %></td>
-      <td><%= render partial: 'songs/delete_song', locals: {song: song} %></td>
+      <% if @playlist.user == current_user %>
+        <td><%= render partial: 'songs/play_song', locals: {song: song} %></td>
+        <td><%= render partial: 'songs/delete_song', locals: {song: song} %></td>
+      <% end %>
     </tr>
     <% end %>
   </table>

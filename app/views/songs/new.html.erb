@@ -1,3 +1,15 @@
+<% if @song.errors.any? %> 
+  <div id="error_explanation">
+    <h4><%= pluralize(@song.errors.count, "error") %> prohibited this song from being created:</h4>
+
+    <ul>
+    <% @song.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <h1>Create Song</h1>
 <br>
 <%= form_for @song do |f| %>

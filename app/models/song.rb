@@ -1,5 +1,5 @@
 class Song < ApplicationRecord
-  validates :name, uniqueness: { scope: :artist, message: "Song already exists"}
+  validates :name, uniqueness: { scope: :artist, message: "Song already exists for this artist"}
 
   has_many :users, through: :playlists
   has_many :song_playlists
