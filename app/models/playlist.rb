@@ -4,9 +4,7 @@ class Playlist < ApplicationRecord
   has_many :songs, through: :song_playlists
 
   def remove_song_from_playlist(song)
-    @songs = self.songs
-    @songs.find_by_id(song.id).delete
-    self.save
+    self.songs.delete(song)
     #song = @songs.find_by(name: params["song"]["name"], artist: params["song"]["artist"])
     #@songs.delete(song)
     #@songs.save
