@@ -1,6 +1,6 @@
 class PlaylistsController < ApplicationController
   def new
-    @playlist = Playlist.new(user_id: params[:id])
+    @playlist = Playlist.new(user_id: params[:id]) 
     @user = User.find(params[:user_id])
   end
 
@@ -9,16 +9,10 @@ class PlaylistsController < ApplicationController
     @user = User.find(params[:user_id])
     @playlist.user = @user
     if @playlist.save
-      #if user_params[:admin] == "0"
         session[:playlist_id] = @playlist.id
-        #format.html { redirect_to @user, notice: "Welcome to APP NAME!" }
         redirect_to user_playlist_path(@user, @playlist)
-      #elsif user_params[:admin] == "1"
-      #  admin_signup
-      #end
     else
       render 'new'
-      #format.html { render :new }
     end
   end
 
@@ -45,6 +39,7 @@ class PlaylistsController < ApplicationController
     @playlist = Playlist.find(params[:id])
     @user = @playlist.user
     #if @playlist.user = User.find_by_id(session[:id])
+      if !params["playlist"]["song"]["delete"]
       if @playlist.update_attributes(playlist_params)
         if params["playlist"]["song"] && !params["playlist"]["song"].empty?
           song_array = params["playlist"]["song"].split(" --- ")
@@ -74,10 +69,6 @@ class PlaylistsController < ApplicationController
       redirect_to '/'
     end
   end
-
-  #def destroy
-  #  if params["playlist"]["song"]
-  #end
 
   private
 

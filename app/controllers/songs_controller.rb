@@ -18,7 +18,6 @@ class SongsController < ApplicationController
       #end
     else
       render 'new'
-      #format.html { render :new }
     end
   end
 
