@@ -38,7 +38,6 @@ class PlaylistsController < ApplicationController
   def update
     @playlist = Playlist.find(params[:id])
     @user = @playlist.user
-    #if @playlist.user = User.find_by_id(session[:id])
     if !params["playlist"]["song"]["delete"]
       if @playlist.update_attributes(playlist_params)
         if params["playlist"]["song"] && !params["playlist"]["song"].empty?
@@ -58,8 +57,6 @@ class PlaylistsController < ApplicationController
       else
         render 'edit'
       end
-    #else
-      #WARNING - DO NOT HAVE ACCESS TO EDIT THIS PLAYLIST
     end
   end
 
