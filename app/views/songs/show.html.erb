@@ -1,11 +1,11 @@
 <h2><%= @song.name %> </h2><br>
 
-<h4>Artist: <%= @song.artist %>
+<h4>Artist: <%= @song.artist %></h4><br>
 <h4>Genre: <%= @song.genre %></h4><br>
 
 <h4>Appears on these Playlists...</h4>
 <ol>
 <% @song.playlists.where(private: false).each do |playlist| %>
-  <li><%= link_to playlist.title, playlist %> - <%= playlist.description %></li>
+  <li><%= link_to playlist.title, user_playlist_path(playlist.user, playlist) %> - <%= playlist.description %></li>
 <% end %>
 </ol>

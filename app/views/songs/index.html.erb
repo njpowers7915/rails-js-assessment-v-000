@@ -13,7 +13,7 @@
   </tr>
   <% @songs.each do |i|%>
   <tr>
-    <td><%= i.name %></td>
+    <td><%= link_to i.name, song_path(i) %></td>
     <td><%= i.artist %></td>
     <td><%= i.genre %></td>
     <td><%= i.plays %></td>

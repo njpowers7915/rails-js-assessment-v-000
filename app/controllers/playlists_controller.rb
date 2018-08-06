@@ -1,6 +1,6 @@
 class PlaylistsController < ApplicationController
   def new
-    @playlist = Playlist.new(user_id: params[:id]) 
+    @playlist = Playlist.new(user_id: params[:id])
     @user = User.find(params[:user_id])
   end
 
@@ -39,7 +39,7 @@ class PlaylistsController < ApplicationController
     @playlist = Playlist.find(params[:id])
     @user = @playlist.user
     #if @playlist.user = User.find_by_id(session[:id])
-      if !params["playlist"]["song"]["delete"]
+    if !params["playlist"]["song"]["delete"]
       if @playlist.update_attributes(playlist_params)
         if params["playlist"]["song"] && !params["playlist"]["song"].empty?
           song_array = params["playlist"]["song"].split(" --- ")
@@ -55,7 +55,7 @@ class PlaylistsController < ApplicationController
       end
     #else
       #WARNING - DO NOT HAVE ACCESS TO EDIT THIS PLAYLIST
-    #end
+    end
   end
 
   def index

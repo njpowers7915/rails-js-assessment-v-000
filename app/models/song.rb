@@ -23,4 +23,5 @@ class Song < ApplicationRecord
   def self.most_popular
     order("songs.plays DESC").order("songs.artist ASC").order("songs.name ASC")
   end
+
 end
