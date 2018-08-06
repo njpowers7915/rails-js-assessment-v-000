@@ -44,8 +44,13 @@ class PlaylistsController < ApplicationController
         if params["playlist"]["song"] && !params["playlist"]["song"].empty?
           song_array = params["playlist"]["song"].split(" --- ")
           song = Song.find_by(name: song_array[0], artist: song_array[1])
-          @playlist.songs << song
-          redirect_to user_playlist_path(@user, @playlist)
+          if @playlist.songs.include(song)?
+            @playlist.songs << song
+            redirect_to user_playlist_path(@user, @playlist)
+          else
+            flash[:notice] = "Song already exists in this playlist"
+            redirect_to user_playlist_path(@user, @playlist)
+          end
         else
           @playlist.update_attributes(playlist_params)
           redirect_to user_playlist_path(@user, @playlist)
