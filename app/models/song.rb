@@ -5,9 +5,6 @@ class Song < ApplicationRecord
   has_many :song_playlists
   has_many :playlists, through: :song_playlists
 
-  #def add_song
-  #end
-
   def play_song
     self.update_attribute(:plays, (self.plays + 1))
   end

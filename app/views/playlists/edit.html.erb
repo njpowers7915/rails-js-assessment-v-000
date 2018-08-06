@@ -1,13 +1,11 @@
 <h2>Edit Playlist</h2>
 <br>
 <%= form_for ([@user, @playlist]) do |f| %>
-  <h4>Title: </h4>
-  <%= f.text_field :title %><br>
-  <br>
 
-  <h4>Description: </h4>
+  <h4>Title: </h4><br>
+  <%= f.text_field :title %><br>
+  <h4>Description: </h4><br>
   <%= f.text_area :description %><br>
-  <br>
 
   <%= label :private, "Private", value: true %>
   <%= f.radio_button :private, true, :value => true %>

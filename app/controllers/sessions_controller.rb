@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(name: params[:session][:name])
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
-      redirect_to @user#, notice: "Welcome back to APP NAME"
+      redirect_to @user
     else
       flash[:danger] = 'Invalid name/password combination'
       redirect_to login_path
