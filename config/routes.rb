@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :songs
   get '/songs/:attribute/:name', to: 'songs#index'
 
+  get '/auth/facebook/callback', to: 'sessions#create'
+
 
   root "welcome#home"
 
