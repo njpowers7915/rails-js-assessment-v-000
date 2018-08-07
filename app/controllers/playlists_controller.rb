@@ -20,13 +20,8 @@ class PlaylistsController < ApplicationController
   def show
     if Playlist.find_by_id(params[:id])
       @playlist = Playlist.find_by_id(params[:id])
-      @user = @playlist.user
+      @user = User.find_by_id(session[:user_id])
       @songs = @playlist.songs
-      #@attraction = Attraction.find_by_id(session[:attraction_id])
-
-    else
-      #ERROR MESSAGE
-      #redirect_to '/'
     end
   end
 
@@ -81,6 +76,6 @@ class PlaylistsController < ApplicationController
   private
 
   def playlist_params
-    params.require(:playlist).permit(:title, :description, :private, :user_id)
+    params.require(:playlist).permit(:title, :description, :private, :user_id, :likes)
   end
 end

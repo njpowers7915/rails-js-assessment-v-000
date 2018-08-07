@@ -1,0 +1,7 @@
+<%= form_for @user do |f| %>
+  <%= f.hidden_field :name %>
+  <%= f.hidden_field :email %>
+  <%= f.hidden_field :password_digest %>
+  
+  <%= f.submit "I like this playlist!" %>
+<% end %>

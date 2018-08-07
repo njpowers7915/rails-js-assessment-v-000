@@ -34,4 +34,8 @@
 <% end %>
 
 <br>
+<% if @playlist.user != current_user %>
+  <%= render 'users/like_playlist' %>
+<% end %>
+<br>
 <h4><%= link_to "View More Playlists", playlists_path %></h4>
