@@ -12,6 +12,7 @@ class PlaylistsController < ApplicationController
     if @playlist.save
         session[:playlist_id] = @playlist.id
         @user.like_playlist(@playlist)
+        @user.save
         redirect_to user_playlist_path(@user, @playlist)
     else
       render 'new'

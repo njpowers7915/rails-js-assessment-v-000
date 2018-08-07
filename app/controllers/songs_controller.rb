@@ -42,7 +42,8 @@ class SongsController < ApplicationController
     if logged_in?
       if params["user_id"]
         @user = User.find_by_id(params["user_id"])
-        @songs = @user.liked_songs
+
+        @songs = @user.songs
       elsif is_admin?
         @songs = Song.sort
       elsif params["attribute"] == "artist"

@@ -6,31 +6,34 @@ class User < ApplicationRecord
   has_many :playlists
   has_many :songs, through: :playlists
 
-  PLAYLISTS = []
-  SONGS = []
+
+  #PLAYLISTS = []
+  #SONGS = []
 
 
   def like_playlist(playlist)
-    #if !PLAYLISTS.nil?
-      PLAYLISTS << playlist
-      playlist.likes = playlist.likes + 1
-      playlist.save
-    #else
-      #PLAYLISTS = [playlist]
-    #end
+    playlist.likes = playlist.likes + 1
+    playlist.save
+    self.songs << playlist.songs
   end
 
-  def liked_songs
-    if !PLAYLISTS.nil?
-      PLAYLISTS.each do |playlist|
-        playlist.songs.each do |song|
-          if !SONGS.include?(song)
-            SONGS << song
-          end
-        end
-      end
-    end
-    SONGS
-  end
+  #def liked_playlists
+  #  array = self.playlists
+  #  self.playlists +
+  #end
+
+  #def liked_songs
+  #  liked_songs = self.songs + self.liked_playlists.songs
+    #if !self.liked_playlists.nil?
+    #  self.liked_playlists.each do |playlist|
+    #    playlist.songs.each do |song|
+    #      if !SONGS.include?(song)
+    #        SONGS << song
+    #      end
+    #    end
+    #  end
+    #end
+    #SONGS
+  #end
 
 end
