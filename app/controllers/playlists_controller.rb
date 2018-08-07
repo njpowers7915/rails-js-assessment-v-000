@@ -1,7 +1,8 @@
 class PlaylistsController < ApplicationController
   def new
-    @playlist = Playlist.new(user_id: params[:id])
     @user = User.find(params[:user_id])
+    @playlist = @user.playlists.build(user_id: params[:id])
+    #@playlist.build(user_id: params[:id])
   end
 
   def create
