@@ -40,7 +40,10 @@ class SongsController < ApplicationController
   def index
     @song = Song.new
     if logged_in?
-      if is_admin?
+      if params["user_id"]
+        @user = User.find_by_id(params["user_id"])
+        @songs = @user.liked_songs
+      elsif is_admin?
         @songs = Song.sort
       elsif params["attribute"] == "artist"
         @artist = slug_to_name(params["name"])

@@ -11,6 +11,7 @@ class PlaylistsController < ApplicationController
     @playlist.user = @user
     if @playlist.save
         session[:playlist_id] = @playlist.id
+        @user.like_playlist(@playlist)
         redirect_to user_playlist_path(@user, @playlist)
     else
       render 'new'
@@ -20,6 +21,7 @@ class PlaylistsController < ApplicationController
   def show
     if Playlist.find_by_id(params[:id])
       @playlist = Playlist.find_by_id(params[:id])
+      session[:playlist_id] = @playlist.id
       @user = User.find_by_id(session[:user_id])
       @songs = @playlist.songs
     end

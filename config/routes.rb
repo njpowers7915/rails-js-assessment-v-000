@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :playlists, only: [:new, :create, :show, :edit, :update, :destroy]
+    resources :songs, only: [:index]
   end
   resources :playlists, only: [:index]
 

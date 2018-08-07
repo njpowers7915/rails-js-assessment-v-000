@@ -34,15 +34,16 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find_by_id(session[:user_id])
   end
 
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
+    @user = User.find_by_id(session[:user_id])
+    if params["commit"]
+      @playlist = Playlist.find_by_id(session[:playlist_id])
+      @user.like_playlist(@playlist)
+      @user.save
+      redirect_to @user
     end
   end
 
