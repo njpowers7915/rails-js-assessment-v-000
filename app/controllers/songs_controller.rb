@@ -9,13 +9,8 @@ class SongsController < ApplicationController
   def create
     @song = Song.new(song_params)
     if @song.save
-      #if user_params[:admin] == "0"
         session[:song_id] = @song.id
-        #format.html { redirect_to @user, notice: "Welcome to APP NAME!" }
         redirect_to songs_path
-      #elsif user_params[:admin] == "1"
-      #  admin_signup
-      #end
     else
       render 'new'
     end
@@ -46,11 +41,7 @@ class SongsController < ApplicationController
     @song = Song.new
     if logged_in?
       if is_admin?
-        @songs = Song.all #SORT BY NAME
-      #elsif params["attribute"] == "popular"
-      #  if params
-      #  @songs = Song.most_popular
-        #SORT BY MOST PLAYS
+        @songs = Song.sort
       elsif params["attribute"] == "artist"
         @artist = slug_to_name(params["name"])
         @songs = Song.by_artist(@artist)

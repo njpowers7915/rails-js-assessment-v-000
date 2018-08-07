@@ -35,4 +35,8 @@
 <br>
 
 <h4>Song Search</h4>
-<h4><%= link_to "Most Popular Songs", '/songs/most_popular' %></h4><br>
+<% if is_admin? %>
+  <h4><%= link_to "Song Index", songs_path %></h4><br>
+  <% else %>
+  <h4><%= link_to "Most Popular Songs", '/songs/most_popular' %></h4><br>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_24_133215) do
+ActiveRecord::Schema.define(version: 2018_08_07_145013) do
 
   create_table "playlists", force: :cascade do |t|
     t.string "title"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2018_07_24_133215) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "description"
+    t.integer "likes", default: 0
   end
 
   create_table "song_playlists", force: :cascade do |t|
