@@ -9,8 +9,9 @@ class SessionsController < ApplicationController
       u.email = auth['info']['email']
     end
     session[:user_id] = @user.id
-    redirect_to @user
-    #if params[:session][:name]
+    #redirect_to @user
+    render 'welcome/home'
+    #if !params[:session][:name].nil?
     #  @user = User.find_by(name: params[:session][:name])
     #  if @user && @user.authenticate(params[:session][:password])
     #    session[:user_id] = @user.id
@@ -23,10 +24,9 @@ class SessionsController < ApplicationController
     #  @user = User.find_or_create_by(uid: auth['uid']) do |u|
     #    u.name = auth['info']['name']
     #    u.email = auth['info']['email']
-    #    u.image = auth['info']['image']
     #  end
     #  session[:user_id] = @user.id
-    #  render 'welcome/home'
+    #  rendirect_to @user
     #end
   end
 

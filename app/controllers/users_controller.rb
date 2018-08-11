@@ -5,6 +5,11 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def index
+    @user = User.find_by_id(session[:user_id])
+    redirect_to '/'
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save
